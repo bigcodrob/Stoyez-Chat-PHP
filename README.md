@@ -8,9 +8,8 @@ This is a PHP Chat lightly based on LeChat created a while ago based in the PERL
 
     Optimized for TOR
     No JavaScript needed
-    Cookies supported, but not needed
-    Members and guests
-    Moderatoral approval of new guests
+    Guests, Members, Mods, Admin and Super Admin
+    Admin Registration of Guests
     Public, member, moderator and admin only chats
     Autologout when inactive for some time
     And more
