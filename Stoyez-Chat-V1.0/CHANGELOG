@@ -1,0 +1,9 @@
+Version V1.0 - Mar. 03, 2019
+1. Added in additional SQL injection and XSS prevention measures.
+2. Added in username and password character restrictions. (A-Z, a-z, 0-9, @, #, $, %, &, *) is allowed.
+3. Cleaned up code a bit so that mysqli connections weren't repeated several times when they were just needed once. (In future versions the connection will be callled through a separate file)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Version V0.8 - Feb. 26, 2019
+Initial release
