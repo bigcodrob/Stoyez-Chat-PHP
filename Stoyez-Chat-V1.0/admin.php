@@ -14,9 +14,7 @@
 	
 	$userLevel = (int)$level['level'];
 
-function activeSessions() {
-	echo "Feature Coming Soon";
-}
+
 
 if ($_SESSION['username'] == null || $userLevel != 8) {
 	header('Location: login.php');

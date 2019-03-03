@@ -9,6 +9,8 @@
 	
 	session_start();
 	
+	$mysqli = mysqli_connect($host, $dbuser, $dbpass, $dbname);
+	
 	if ( isset($_SESSION) && !isset($_SESSION['username']) ) {
 		echo "<p>You are already Logged out <br><br> Redirecting to login</p>";
 		header('Refresh: 5; login.php');
@@ -18,9 +20,11 @@
 	} else {
 		
 		//Database delete user if users rank is below 2.
-		$username = $_SESSION['username'];
+		$unfilteredUsername= $_SESSION['username'];
+		$XSSfilteredUsername = htmlspecialchars($unfilteredUsername, ENT_QUOTES, 'UTF-8');
+		$sterilizedUsername = $mysqli->escape_string($XSSfilteredUsername);
 		
-		$mysqli = mysqli_connect($host, $dbuser, $dbpass, $dbname);
+		$username = $sterilizedUsername;
 
 		$sql = "UPDATE members SET status='0' WHERE nickname='$username'";
 		
@@ -28,7 +32,6 @@
 		
 		
 		//Check User level to see if its too high for deletion
-		$mysqli = mysqli_connect($host, $dbuser, $dbpass, $dbname);
 	
 		$levelMysql= $mysqli->query("SELECT * FROM members WHERE nickname='$username'") or die($mysqli->error());
 		

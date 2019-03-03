@@ -9,8 +9,6 @@ if ($_SESSION['username'] == null) {
 	//establish database connection
 	$mysqli = mysqli_connect($host, $dbuser, $dbpass, $dbname);
 	
-	$mysqli2 = mysqli_connect($host, $dbuser, $dbpass, $dbname);
-	
 	//CHAT OUTPUT
 	$result = $mysqli->query("SELECT * FROM messages ORDER BY id DESC") or die($mysqli->error());
 
@@ -29,7 +27,6 @@ if ($_SESSION['username'] == null) {
 	//FIND LEVEL FOR CHAT VIEW
 	
 	$username = $_SESSION['username'];
-	$mysqli = mysqli_connect($host, $dbuser, $dbpass, $dbname);
 	
 	$getLevel = $mysqli->query("SELECT * FROM members WHERE nickname='$username'") or die($mysqli->error());
 	
@@ -42,7 +39,7 @@ if ($_SESSION['username'] == null) {
 <html>
 <head>
 	<link rel = "stylesheet" type = "text/css" href = "css/view_stylesheet.css" />
-	<?php echo '<meta http-equiv="refresh" content=' .$refresh. ';url=view.php>'; ?>
+	<?php echo '<meta charset="UTF-8" http-equiv="refresh" content=' .$refresh. ';url=view.php>'; ?>
 	<?php echo 	'<title>'.$chatname?>
 	<?php echo " - View </title>"; ?>	
 </head>

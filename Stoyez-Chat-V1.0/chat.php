@@ -18,7 +18,7 @@
 <head>
 	<link rel = "stylesheet" type = "text/css" href = "css/chat_stylesheet.css" />
 	<?php echo 	'<title>'.$chatname. ' - Chat </title>'; ?>
-	<meta http-equiv="refresh" content="900;url=chat.php">
+	<meta charset="UTF-8" http-equiv="refresh" content="900;url=chat.php">
 </head>
 <frameset rows="100px, *, 62px" framespacing="3" border="3" frameborder="3" >
 	<frame src="post.php" scrolling="no" >

@@ -14,10 +14,11 @@
 		if(empty($_POST['text'])) {
 			header("Refresh: 0");
 		} else {
-			$mysqli2 = mysqli_connect($host, $dbuser, $dbpass, $dbname);
 		
-			$text = $_POST['text'];
-			$textCleaned = $mysqli2->escape_string($_POST['text']);
+			//Additional MSQL injection prevention
+			$unfilteredText = $_POST['text'];
+			$XSSfilteredText = htmlspecialchars($unfilteredText, ENT_QUOTES, 'UTF-8');
+			$textCleaned = $mysqli->escape_string($XSSfilteredText);
 			
 			$send_to = $_POST['sent_to'];
 		
@@ -25,9 +26,9 @@
 		
 			$result2 = "INSERT INTO messages(poster, text, postdate, poststatus) VALUES ('$username', '$textCleaned', '$date', '$send_to')";
 		
-			mysqli_query($mysqli2, $result2);
+			mysqli_query($mysqli, $result2);
 		
-			mysqli_close($mysqli2);
+			mysqli_close($mysqli);
 			$_SESSION['last_time'] = time();
 			header('Refresh: 0');
 		}
